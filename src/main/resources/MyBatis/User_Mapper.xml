@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.tigerlogistics.multiplicantin.tll.DAO.UserDAO"> 
+<resultMap type="com.tigerlogistics.multiplicantin.tll.model.User" id="user">
+<result column="userId" jdbcType="INTEGER" property="userId"/>
+<result column="username" jdbcType="VARCHAR" property="userName"/>
+<result column="password" jdbcType="VARCHAR" property="password"/>
+<result column="state" jdbcType="VARCHAR" property="state"/>
+<result column="city" jdbcType="VARCHAR" property="city"/>
+<result column="area" jdbcType="VARCHAR" property="area"/>
+<result column="address" jdbcType="VARCHAR" property="address"/>
+<result column="sex" jdbcType="VARCHAR" property="sex"/>
+<result column="phoneno" jdbcType="VARCHAR" property="phoneNo"/>
+</resultMap>
+<select id="checkLogin" resultMap="user">
+select * from user where username=#{userName} and password=#{password}
+
+
+
+</select>
+
+
+
+
+
+
+
+
+</mapper>
