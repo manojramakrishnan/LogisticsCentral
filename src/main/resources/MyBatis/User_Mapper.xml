@@ -18,8 +18,69 @@ select * from user where username=#{userName} and password=#{password}
 
 
 </select>
+<select id="showStates" resultType="java.lang.String">
+select distinct state from location 
 
 
+
+</select>
+<insert id="insertUser" parameterType="com.tigerlogistics.multiplicantin.tll.model.User">
+insert into user 
+<trim prefix = "(" suffix = ")" suffixOverrides= ",">
+<if test= "username != null">
+username,
+</if>
+<if test= "password != null">
+password,
+</if>
+<if test= "state != null">
+state,
+</if>
+<if test= "city != null">
+city,
+</if>
+<if test= "area != null">
+area,
+</if>
+<if test= "address != null">
+address,
+</if>
+<if test= "sex != null">
+sex,
+</if>
+<if test= "phoneno != null">
+phoneno,
+</if>
+
+</trim>
+<trim prefix= "values (" suffix= ")" suffixOverrides= ",">
+<if test= "username != null">
+#{username, jdbcType=VARCHAR},
+</if>
+<if test= "password != null">
+#{password, jdbcType=VARCHAR},
+</if>
+<if test= "state != null">
+#{state, jdbcType=VARCHAR},
+</if>
+<if test= "city != null">
+#{city, jdbcType=VARCHAR},
+</if>
+<if test= "area != null">
+#{area, jdbcType=VARCHAR},
+</if>
+<if test= "address != null">
+#{address, jdbcType=VARCHAR},
+</if>
+<if test= "sex != null">
+#{sex, jdbcType=VARCHAR},
+</if>
+<if test= "phoneno != null">
+#{phoneno, jdbcType=VARCHAR},
+</if>
+
+</trim>
+</insert>
 
 
 
