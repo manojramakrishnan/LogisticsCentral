@@ -2,15 +2,15 @@
 <html lang="eric">
 	<head>
 		<meta charset="utf-8" />
-		<title>管理人员登录界面</title>
-		<!--用百度的静态资源库的cdn安装bootstrap环境-->
-		<!-- Bootstrap 核心 CSS 文件 -->
+		<title>Manager login interface</title>
+		<!--Install the bootstrap environment with the cdn of Baidu's static resource library-->
+		<!-- Bootstrap Core CSS file -->
 		<link href="/css/bootstrap.min.css" rel="stylesheet">
-		<!--font-awesome 核心我CSS 文件-->
+		<!--font-awesome Core my css file-->
 		<link href="/css/font-awesome.min.css" rel="stylesheet">
-		<!-- 在bootstrap.min.js 之前引入 -->
+		<!-- In bootstrap.min.js Introduced before -->
 		<script src="/js/jquery-2.1.4.min.js"></script>
-		<!-- Bootstrap 核心 JavaScript 文件 -->
+		<!-- Bootstrap core JavaScript file -->
 		<script src="/js/bootstrap.min.js"></script>
 		<!--jquery.validate-->
 		<script type="text/javascript" src="/js/jquery.validate.min.js" ></script>
@@ -33,26 +33,26 @@
 	<div class="container">
 		<div class="form row">
 			<form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="login_form" action="/manager/login_verify" method="post">
-				<h3 class="form-title" style="color: white;">登录您的账户</h3>
+				<h3 class="form-title" style="color: white;">Log in to your account</h3>
 				<div class="col-sm-9 col-md-9">
 					<div class="form-group">
 						<i class="fa fa-user fa-lg"></i>
-						<input class="form-control required" type="text" placeholder="用户名" name="username" autofocus="autofocus" maxlength="20"/>
+						<input class="form-control required" type="text" placeholder="username" name="username" autofocus="autofocus" maxlength="20"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-lock fa-lg"></i>
-							<input class="form-control required" type="password" placeholder="密码" name="password" maxlength="20"/>
+							<input class="form-control required" type="password" placeholder="password" name="password" maxlength="20"/>
 					</div>
 					<div class="form-group radio-inline">
 						<label class="radio radio-inline">
-							<input type="radio" name="identity" value="1"/> <p style="color: white">管理人员</p>
+							<input type="radio" name="identity" value="1"/> <p style="color: white">manager</p>
 						</label>
 						<label class="radio radio-inline">
-							<input type="radio" name="identity" value="2"/> <p style="color: white">配送人员</p>
+							<input type="radio" name="identity" value="2"/> <p style="color: white">Delivery staff</p>
 						</label>
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn btn-success pull-right" value="登录"/>
+						<input type="submit" class="btn btn-success pull-right" value="Log in"/>
 					</div>
 				</div>
 			</form>
@@ -71,10 +71,10 @@
 					},
 				},
 				messages: {
-					username: "请输入姓名",
+					username: "Please type in your name",
 					password: {
-						required: "请输入密码",
-						minlength: jQuery.format("密码不能小于{0}个字 符")
+						required: "Please enter the password",
+						minlength: jQuery.format("Password cannot be less than {0} characters")
 					},
 				}
 			});

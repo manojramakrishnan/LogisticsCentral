@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="eric">
 <head>
-    <title>订单创建</title>
+    <title>Order creation</title>
     <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" /><!-- fontawesome css -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /><!-- Bootstrap stylesheet -->
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- stylesheet -->
@@ -62,21 +62,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span class="icon-bar"></span>
                     </button>
                     <div class="logo">
-                        <h1><a href="/user/mainpage">速通</a></h1>
+                        <h1><a href="/user/mainpage">Speed pass</a></h1>
                     </div>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/user/mainpage">主页</a></li>
-                        <li><a href="about.html">关于我们</a></li>
-                        <#--<li><a href="gallery.html">公司故事</a></li>-->
+                        <li><a href="/user/mainpage">Home page</a></li>
+                        <li><a href="about.html">about us</a></li>
+                        <#--<li><a href="gallery.html">Company story</a></li>-->
                         <li class="dropdown">
                             <#if Session["user"]?exists> <a>${Session.user.username}</a></#if>
                         <ul class="dropdown-menu">
                             <#if Session["user"]?exists>
-                            <li><a href="/user/log_out"><span class="glyphicon glyphicon-star">注销</a></li>
+                            <li><a href="/user/log_out"><span class="glyphicon glyphicon-star">Logout</a></li>
                             </#if>
                         </ul>
                         </li>
@@ -92,78 +92,78 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //header -->
 <div class="container-fluid form-inline">
     <form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="form_look" >
-        <h3 class="form-title">您的信息</h3>
+        <h3 class="form-title">your message</h3>
         <div class="col-sm-9 col-md-9">
             <div class="form-group input-group">
-                <span class="input-group-addon">寄件人姓名</span>
+                <span class="input-group-addon">Sender name</span>
                 <input class="form-control required" type="text" readonly="readonly" value="${Session.user.username}" autofocus="autofocus"/>
             </div>
             <div class="form-group input-group">
-                <span class="input-group-addon">地域信息</span>
+                <span class="input-group-addon">Geographical information</span>
                 <input class="form-control required" type="text" readonly="readonly" value="${Session.user.province+Session.user.city+Session.user.area}" />
             </div>
             <div class="form-group input-group">
-                <span class="input-group-addon">地址</span>
+                <span class="input-group-addon">address</span>
                 <input class="form-control required" type="text" readonly="readonly" value="${Session.user.address}" name="user_address"/>
             </div>
         </div>
     </form>
     <form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="form_submit" action="/order/generate" method="post">
-        <h3 class="form-title">收件人信息</h3>
+        <h3 class="form-title">Recipient Information</h3>
         <div class="col-sm-9 col-md-9">
             <div class="form-group input-group">
-                <span class="input-group-addon">收件人编号</span>
+                <span class="input-group-addon">Recipient number</span>
                 <input class="form-control" type="text"   name="receiver_id" />
             </div>
             <div class="form-group input-group">
-                <span class="input-group-addon">收件人姓名</span>
+                <span class="input-group-addon">The recipient's name</span>
                 <input class="form-control" type="text"   name="receiver_name" />
             </div>
             <div class="form-group input-group">
-                <span class="input-group-addon">收件人电话</span>
+                <span class="input-group-addon">The recipient's phone</span>
                 <input class="form-control" type="text"  name="receiver_phone" />
             </div>
             <div class="form-group input-group form-inline col-md-14">
-                <span class="input-group-addon">收件人省市区</span>
+                <span class="input-group-addon">Recipient's province</span>
                 <select class="form-control col-sm-1" name="receiver_province" id="province">
-                    <option>--请选择--</option>
+                    <option>--please choose--</option>
                     <#list provinces as province>
                     <option value="${province}">${province}</option>
                 </#list>
                 </select>
                 <select class="form-control col-sm-1" name="receiver_city" id="city">
-                    <option>--请选择--</option>
+                    <option>--please choose--</option>
                 </select>
                 <select class="form-control col-sm-1" name="receiver_area" id="area">
-                    <option>--请选择--</option>
+                    <option>--please choose--</option>
                 </select>
             </div>
             <div class="form-group input-group">
-                <span class="input-group-addon ">收件人地址</span>
+                <span class="input-group-addon ">receiver's address</span>
                 <input class="form-control" type="text"  name="receiver_address" />
             </div>
             <div class="form-group input-group">
-                <span class="input-group-addon">物品名称</span>
+                <span class="input-group-addon">Item Name</span>
                 <input class="form-control" type="text"  name="order_name" />
             </div>
             <div class="form-group input-group">
                 <#--<div class="col-md-12">-->
-                <span class="input-group-addon">商品类型</span>
+                <span class="input-group-addon">Product Types</span>
                     <select class="form-group col-md-4" id="order_type" name="order_type">
-                        <option value="文件">文件</option>
-                        <option value="包裹">包裹</option>
-                        <option value="物品">物品</option>
-                        <option value="易碎品">易碎品</option>
+                        <option value="File">file</option>
+                        <option value="Parcel">parcel</option>
+                        <option value="Item">Item</option>
+                        <option value="Fragile Goods">Fragile Goods</option>
                     </select>
-                <#--<input class="form-control" type="radio" value="文件" name="order_type"/>文件-->
-                <#--<input class="form-control" type="radio" value="包裹" name="order_type"/>包裹-->
-                <#--<input class="form-control" type="radio" value="物品" name="order_type"/>物品-->
-                <#--<input class="form-control" type="radio" value="易碎品" name="order_type"/>易碎品-->
+                <#--<input class="form-control" type="radio" value="document" name="order_type"/>document-->
+                <#--<input class="form-control" type="radio" value="pack" name="order_type"/>pack-->
+                <#--<input class="form-control" type="radio" value="thing" name="order_type"/>thing-->
+                <#--<input class="form-control" type="radio" value="Fragile items" name="order_type"/>Fragile items-->
                 <#--</div>-->
             </div>
                 <br/>
             <div class="form-group pull-right" style="margin-top: 30px;">
-                <input type="submit" class="btn btn-success pull-right" value="创建"/>
+                <input type="submit" class="btn btn-success pull-right" value="create"/>
             </div>
         </div>
     </form>

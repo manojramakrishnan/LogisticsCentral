@@ -40,7 +40,7 @@
                     <li><a href="#"><i class="fa fa-user fa-fw"></i><#if Session["deliver"]?exists>${Session.deliver.deliver_name}</#if></a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="/deliver/log_out"><i class="fa fa-sign-out fa-fw"></i>退出</a>
+                    <li><a href="/deliver/log_out"><i class="fa fa-sign-out fa-fw"></i>quit</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -54,16 +54,16 @@
             <ul class="nav" id="main-menu">
 
                 <li class="nav1">
-                    <a href=# id="nav1" class="active-menu"><i class="fa fa-dashboard"></i> 历史订单</a>
+                    <a href=# id="nav1" class="active-menu"><i class="fa fa-dashboard"></i> Historical orders</a>
                 </li>
                 <li class="nav1">
-                    <a href=# id="nav1" ><i class="fa fa-desktop"></i> 未接收订单</a>
+                    <a href=# id="nav1" ><i class="fa fa-desktop"></i> Order not received</a>
                 </li>
                 <li class="nav1">
-                    <a href=# id="nav1" ><i class="fa fa-tablet"></i>配送中订单</a>
+                    <a href=# id="nav1" ><i class="fa fa-tablet"></i>Orders in delivery</a>
                 </li>
                 <li class="nav1">
-                    <a href=# id="nav1" ><i class="fa fa-bar-chart-o"></i> 本月财务状况</a>
+                    <a href=# id="nav1" ><i class="fa fa-bar-chart-o"></i> Financial situation this month</a>
                 </li>
 
 
@@ -108,7 +108,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-header">
-                        欢迎来到订单管理界面 <small>配送员专属订单管理页面</small>
+                        Welcome to the order management interface <small>Dedicated order management page for delivery personnel</small>
                     </h1>
                 </div>
             </div>
@@ -119,19 +119,19 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default order_table"  id="finished_order_table" >
                         <div class="panel-heading">
-                            历史订单
+                            Historical orders
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th>订单No.</th>
-                                        <th>订单名称</th>
-                                        <th>配送区间</th>
-                                        <th>订单状态</th>
-                                        <th>时间信息</th>
-                                        <th>配送信息</th>
+                                        <th>Order No.</th>
+                                         <th>Order name</th>
+                                         <th>Delivery area</th>
+                                         <th>Order status</th>
+                                         <th>Time information</th>
+                                         <th>Delivery information</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -143,7 +143,7 @@
                                         <td>${fo.order_name}</td>
                                         <td>${fo.sender_province+fo.sender_city}<span class="fa fa-arrow-right"></span>${fo.receiver_province+fo.receiver_city}</td>
                                         <td>${fo.status}</td>
-                                        <td>${fo.initial_time+" 经过"+fo.live_time}</td>
+                                        <td>${fo.initial_time+" go through"+fo.live_time}</td>
                                         <td>${fo.trans_info}</td>
                                     </tr>
                                     </#list>
@@ -159,22 +159,22 @@
                     <!--  finished_order_table -->
                     <div class="panel panel-default order_table" id="unhandled_order_table" style="display: none;">
                         <div class="panel-heading">
-                            未接收订单
+                            Order not received
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th>订单No.</th>
-                                        <th>订单名称</th>
-                                        <th>配送区间</th>
-                                        <th>订单状态</th>
-                                        <th>时间信息</th>
-                                        <th>配送信息</th>
-                                        <th>重量</th>
-                                        <th>管理员编号</th>
-                                        <TH>提交信息</TH>
+                                        <th>Order No.</th>
+                                         <th>Order name</th>
+                                         <th>Delivery area</th>
+                                         <th>Order status</th>
+                                         <th>Time information</th>
+                                         <th>Delivery information</th>
+                                         <th>weight</th>
+                                         <th>Administrator ID</th>
+                                         <TH>Submit information</TH>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -191,7 +191,7 @@
                                                 <td><input type="text" name="unhandled_trans_info" value="${uo.trans_info}" /></td>
                                                 <td style="table-layout:fixed;width: 50px;"><input type="text" style="width:100%" name="unhandled_volume" value="" /></td>
                                                 <td>${uo.manager_id?c}</td>
-                                                <td><input class="btn btn-info" type="submit" value="提交"></td>
+                                                <td><input class="btn btn-info" type="submit" value="submit"></td>
                                             </tr>
                                         </form>
                                     </#list>
@@ -208,20 +208,20 @@
                     <!--  finished_order_table -->
                     <div class="panel panel-default order_table" id="checked_order_table" style="display: none;">
                         <div class="panel-heading">
-                            配送中订单
+                            Orders in delivery
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th>订单No.</th>
-                                        <th>订单名称</th>
-                                        <th>配送区间</th>
-                                        <th>订单状态</th>
-                                        <th>时间信息</th>
-                                        <th>配送信息</th>
-                                        <th>更新信息</th>
+                                        <th>Order No.</th>
+                                         <th>Order name</th>
+                                         <th>Delivery area</th>
+                                         <th>Order status</th>
+                                         <th>Time information</th>
+                                         <th>Delivery information</th>
+                                         <th>Update information</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -234,9 +234,9 @@
                                                 <td>${co.order_name}</td>
                                                 <td>${co.sender_province+co.sender_city}<span class="fa fa-arrow-right"></span>${co.receiver_province+co.receiver_city}</td>
                                                 <td style="table-layout:fixed;width: 80px;"><input style="width:100%" type="text" name="checked_status" value="${co.status}" /></td>
-                                                <td>${co.initial_time+" 经过"+co.live_time}</td>
+                                                <td>${co.initial_time+" go through"+co.live_time}</td>
                                                 <td><input type="text" name="checked_trans_info" value="${co.trans_info}" /></td>
-                                                <td><input class="btn btn-info" type="submit" value="提交"></td>
+                                                <td><input class="btn btn-info" type="submit" value="submit"></td>
                                                 <input type="hidden" name="checked_volume" value="${co.volume}" />
                                                     <input type="hidden" name="checked_initial_time" value="${co.initial_time}" />
                                                 <input type="hidden" name="manager_id" value="${co.manager_id?c}" />
@@ -259,7 +259,7 @@
                     <!-- start financial -->
                     <div class="panel panel-default order_table" id="financial_table" style="height:400px;display: none;">
                         <div class="input-group col-md-10" style="padding-top:15%;padding-left:30%;">
-                            <span class="input-group-addon">本月工资</span>
+                            <span class="input-group-addon">Salary this month</span>
                             <input type="text" id="end_place" class="form-control" readonly="readonly" value="${salary}" />
                         </div>
                     </div>
@@ -276,7 +276,7 @@
     </div>
     <!-- /. ROW  -->
 </div >
-<footer class="center-block"><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://guantaow.taobao.com/">速通公司</a></p></footer>
+<footer class="center-block"><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://guantaow.taobao.com/">Speed co., ltd.</a></p></footer>
 
 <!-- /. PAGE INNER  -->
 <!--</div>-->

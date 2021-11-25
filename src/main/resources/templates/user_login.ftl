@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
-		<!--安装bootstrap环境-->
-		<!-- Bootstrap 核心 CSS 文件 -->
+		<!--Install the bootstrap environment-->
+		<!-- Bootstrap core CSS file -->
 		<link href="/css/bootstrap.min.css" rel="stylesheet">
-		<!--font-awesome 核心我CSS 文件-->
+		<!--font-awesome core my CSS file-->
 		<link href="/css/font-awesome.min.css" rel="stylesheet">
-		<!-- 在bootstrap.min.js 之前引入 -->
+		<!-- Introduced before bootstrap.min.js -->
 		<script src="/js/jquery-2.1.4.min.js"></script>
-		<!-- Bootstrap 核心 JavaScript 文件 -->
+		<!-- Bootstrap core JavaScript file -->
 		<script src="/js/bootstrap.min.js"></script>
 		<!--jquery.validate-->
 		<script type="text/javascript" src="/js/jquery.validate.min.js" ></script>
@@ -33,7 +33,7 @@
 	<div class="container">
 		<div class="form row">
 			<form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="login_form" action="/user/login_verify" method="post">
-				<h3 class="form-title">登录您的账户</h3>
+				<h3 class="form-title">Log in to your account</h3>
 				<div class="col-sm-9 col-md-9">
 					<div class="form-group">
 						<i class="fa fa-user fa-lg"></i>
@@ -45,13 +45,13 @@
 					</div>
 					<div class="form-group">
 						<label class="checkbox">
-							<input type="checkbox" name="remember" value="1"/> 记住我
+							<input type="checkbox" name="remember" value="1"/> remember me
 						</label>
 						<hr />
-						<a href="javascript:;" id="register_btn" class="">注册账户</a>
+						<a href="javascript:;" id="register_btn" class="">register account</a>
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn btn-success pull-right" value="登录"/>
+						<input type="submit" class="btn btn-success pull-right" value="Log in"/>
 					</div>
 				</div>
 			</form>
@@ -59,55 +59,55 @@
 
 		<div class="form row">
 			<form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="register_form" action="/user/register" method="post">
-				<h3 class="form-title">注册您的账户</h3>
+				<h3 class="form-title">Register your account</h3>
 				<div class="col-sm-9 col-md-9">
 					<div class="form-group">
 						<i class="fa fa-user fa-lg"></i>
-						<input class="form-control required" type="text" placeholder="用户名" name="username" autofocus="autofocus"/>
+						<input class="form-control required" type="text" placeholder="username" name="username" autofocus="autofocus"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-lock fa-lg"></i>
-							<input class="form-control required" type="password" placeholder="密码" id="register_password" name="password"/>
+							<input class="form-control required" type="password" placeholder="password" id="register_password" name="password"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-check fa-lg"></i>
-							<input class="form-control required" type="password" placeholder="再次输入密码" name="rpassword"/>
+							<input class="form-control required" type="password" placeholder="Enter the password again" name="rpassword"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-phone fa-lg"></i>
-							<input class="form-control required" type="text" placeholder="手机号码" name="phoneNum"/>
+							<input class="form-control required" type="text" placeholder="mobile phone number" name="phoneNum"/>
 					</div>
 					<div class="form-group radio-inline">
 						<label class="radio radio-inline">
-						<input class="form-control" type="radio"  value="男" name="sex"/>男
+						<input class="form-control" type="radio"  value="male" name="sex"/>male
 						</label>
 						<label class="radio radio-inline">
-						<input class="form-control" type="radio"  value="女" name="sex"/>女
+						<input class="form-control" type="radio"  value="female" name="sex"/>female
 						</label>
 					</div>
 					<div class="form-group form-inline col-md-14" style="margin-top: 20px;">
 						<select class="form-control col-sm-1" name="province" id="province">
-							<option>-省-</option>
+							<option>-Province-</option>
 							<#list provinces as province>
 								<option value="${province}">${province}</option>
 							</#list>
 						</select>
 						<select class="form-control col-sm-1" name="city" id="city">
-							<option>-市-</option>
+							<option>-city-</option>
 						</select>
 						<select class="form-control col-sm-1" name="area" id="area">
-							<option>-区-</option>
+							<option>-Area-</option>
 						</select>
 					</div>
 
 					<div class="form-group">
 						<i class="fa fa-address-book fa-lg"></i>
-						<input class="form-control" type="text" placeholder="住址" name="address"/>
+						<input class="form-control" type="text" placeholder="address" name="address"/>
 					</div>
 
 					<div class="form-group">
-						<input type="submit" class="btn btn-success pull-right" value="注册"/>
-						<button class="btn btn-info pull-left" id="back_btn">返回</button>
+						<input type="submit" class="btn btn-success pull-right" value="register"/>
+						<button class="btn btn-info pull-left" id="back_btn">return</button>
 					</div>
 				</div>
 			</form>
@@ -177,10 +177,10 @@
 					},
 				},
 				messages: {
-					username: "请输入姓名",
+					username: "Please type in your name",
 					password: {
-						required: "请输入密码",
-						minlength: jQuery.format("密码不能小于{0}个字 符")
+						required: "Please enter the password",
+						minlength: jQuery.format("Password cannot be less than {0} characters")
 					},
 				}
 			});
@@ -200,17 +200,17 @@
 					}
 				},
 				messages: {
-					username: "请输入姓名",
+					username: "Please type in your name",
 					password: {
-						required: "请输入密码",
-						minlength: jQuery.format("密码不能小于{0}个字 符")
+						required: "Please enter the password",
+						minlength: jQuery.format("Password cannot be less than {0} characters")
 					},
 					rpassword: {
-						equalTo: "两次密码不一样"
+						equalTo: "The two passwords are different"
 					},
 					email: {
-						required: "请输入邮箱",
-						email: "请输入有效邮箱"
+						required: "please input your email",
+						email: "Please enter a valid email address"
 					}
 				}
 			});

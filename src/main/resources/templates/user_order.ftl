@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="eric">
 <head>
-    <title>订单查询</title>
+    <title>Order Tracking</title>
     <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" /><!-- fontawesome css -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /><!-- Bootstrap stylesheet -->
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- stylesheet -->
@@ -46,21 +46,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span class="icon-bar"></span>
                     </button>
                     <div class="logo">
-                        <h1><a href="/user/mainpage">速通</a></h1>
+                        <h1><a href="/user/mainpage">Speed pass</a></h1>
                     </div>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/user/mainpage">主页</a></li>
-                        <li><a href="about.html">关于我们</a></li>
-                        <#--<li><a href="gallery.html">公司故事</a></li>-->
+                        <li><a href="/user/mainpage">Home page</a></li>
+                        <li><a href="about.html">about us</a></li>
+                        <#--<li><a href="gallery.html">Company story</a></li>-->
                         <li class="dropdown">
                             <#if Session["user"]?exists> <a>${Session.user.username}</a></#if>
                         <ul class="dropdown-menu">
                             <#if Session["user"]?exists>
-                            <li><a href="/user/log_out"><span class="glyphicon glyphicon-star">注销</a></li>
+                            <li><a href="/user/log_out"><span class="glyphicon glyphicon-star">Logout</a></li>
                             </#if>
                         </ul>
                         </li>
@@ -79,26 +79,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container-fluid form-inline">
 
                 <div class="col-md-5 input-group" id="query_div">
-                <span class="input-group-addon">订单编号</span>
-                <input class="form-control" type="text" placeholder="请输入您的订单编号"  id="order_id" name="order_id"/>
+                <span class="input-group-addon">Order number</span>
+                <input class="form-control" type="text" placeholder="Please enter your order number"  id="order_id" name="order_id"/>
                  <span class="input-group-btn">
-                     <button class="btn btn-info" type="button" id="query">查询</button>
+                     <button class="btn btn-info" type="button" id="query">Inquire</button>
                  </span>
                 </div>
     <div class="col-md-12">
         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
             <tr>
-                <th>订单No.</th>
-                <th>订单名称</th>
-                <th>配送区间</th>
-                <th>寄件人姓名</th>
-                <th>寄件人手机号</th>
-                <th>收件人姓名</th>
-                <th>收件人手机号</th>
-                <th>订单状态</th>
-                <th>时间信息</th>
-                <#--<th>配送信息</th>-->
+                <th>Order No.</th>
+                 <th>Order name</th>
+                 <th>Delivery area</th>
+                 <th>Sender's name</th>
+                 <th>Sender’s mobile phone number</th>
+                 <th>Recipient's name</th>
+                 <th>Recipient's mobile phone number</th>
+                 <th>Order status</th>
+                 <th>Time information</th>
+                 <#--<th>Delivery Information</th>-->
             </tr>
             </thead>
             <tbody>
@@ -108,7 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </tbody>
         </table>
         <div class="col-lg-6 input-group center-block">
-        <span id="trans_span" class="input-group-addon">运输信息:</span>
+        <span id="trans_span" class="input-group-addon">Transport information:</span>
             <input class="form-control" readonly="readonly" type="text" id="transInfos" />
             <#--<input type="hidden" id="arrow" value="">-->
         </div>
@@ -148,7 +148,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                       +order.order_name+"</td><td>"+order.sender_province+order.sender_city+"<span class='glyphicon glyphicon-arrow-right'>"+order.receiver_province+order.receiver_city
                       +"</td><td>"+order.sender_name+"</td><td>"+order.sender_phone
                       +"</td><td>"+order.receiver_name+"</td><td>"+order.receiver_phone
-                      +"</td><td>"+order.status+"</td><td>"+order.initial_time+" 时长："+order.live_time+"</td>");
+                      +"</td><td>"+order.status+"</td><td>"+order.initial_time+"duration："+order.live_time+"</td>");
                       <#--+-->
                       <#--<#list order.trans_info?split(",") as singleInfo>-->
                       <#--singleInfo+"<span class='glyphicon glyphicon-arrow-right'>"-->

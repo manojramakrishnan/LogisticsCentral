@@ -10,7 +10,7 @@
 
 
     <#--<meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
-    <title>用户订单管理系统</title>
+    <title>User order management system</title>
     <!-- Bootstrap Styles-->
     <link href="/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -67,7 +67,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/user/mainpage">速通</a>
+            <a class="navbar-brand" href="/user/mainpage">Speed pass</a>
         </div>
 
         <ul class="nav navbar-top-links navbar-right">
@@ -80,7 +80,7 @@
                     <li><a href="#"><i class="fa fa-user fa-fw"></i><#if Session["user"]?exists>${Session.user.username}</#if></a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="/user/log_out"><i class="fa fa-sign-out fa-fw"></i>退出</a>
+                    <li><a href="/user/log_out"><i class="fa fa-sign-out fa-fw"></i>quit</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -94,16 +94,16 @@
             <ul class="nav" id="main-menu">
 
                 <li class="nav1">
-                    <a href=# id="nav1" class="active-menu"><i class="fa fa-dashboard"></i> 历史订单</a>
+                    <a href=# id="nav1" class="active-menu"><i class="fa fa-dashboard"></i> Historical orders</a>
                 </li>
                 <li class="nav1">
-                    <a href=# id="nav1" ><i class="fa fa-tablet"></i>收件(运送中)</a>
+                    <a href=# id="nav1" ><i class="fa fa-tablet"></i>Receiving (in transit)</a>
                 </li>
                 <li class="nav1">
-                    <a href=# id="nav1" ><i class="fa fa-bar-chart-o"></i>寄出订单</a>
+                    <a href=# id="nav1" ><i class="fa fa-bar-chart-o"></i>Send order</a>
                 </li>
                 <li class="nav2">
-                    <a href=# id="nav2" ><i class="fa fa-map-marker"></i>实时物流显示</a>
+                    <a href=# id="nav2" ><i class="fa fa-map-marker"></i>Real-time logistics display</a>
                 </li>
 
 
@@ -118,7 +118,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-header">
-                        欢迎来到订单管理界面 <small>方便的订单管理页面</small>
+                       Welcome to the order management interface <small>Convenient order management page</small>
                     </h1>
                 </div>
             </div>
@@ -129,19 +129,19 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default order_table"  id="finished_order_table" >
                         <div class="panel-heading">
-                            历史订单
+                            Historical orders
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th>订单No.</th>
-                                        <th>订单名称</th>
-                                        <th>配送区间</th>
-                                        <th>订单状态</th>
-                                        <th>时间信息</th>
-                                        <th>配送信息</th>
+                                        <th>Order No.</th>
+                                         <th>Order name</th>
+                                         <th>Delivery area</th>
+                                         <th>Order status</th>
+                                         <th>Time information</th>
+                                         <th>Delivery information</th>                                    
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -154,7 +154,7 @@
                                             <td>${fo.order_name}</td>
                                             <td>${fo.sender_province+fo.sender_city}<span class="fa fa-arrow-right"></span>${fo.receiver_province+fo.receiver_city}</td>
                                             <td class="center">${fo.status}</td>
-                                            <td class="center">${fo.initial_time+" 经过"+fo.live_time}</td>
+                                            <td class="center">${fo.initial_time+" go through"+fo.live_time}</td>
                                             <td class="center">${fo.trans_info}</td>
                                         </tr>
                                     </#list>
@@ -169,19 +169,19 @@
                     <!--  finished_order_table -->
                     <div class="panel panel-default order_table" id="ing_order_table" style="display: none;">
                         <div class="panel-heading">
-                            进行中订单
+                            Order in progress
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th>订单No.</th>
-                                        <th>订单名称</th>
-                                        <th>发货地</th>
-                                        <th>订单状态</th>
-                                        <th>时间信息</th>
-                                        <th>配送信息</th>
+                                        <th>Order No.</th>
+                                         <th>Order name</th>
+                                         <th>Shipment place</th>
+                                         <th>Order status</th>
+                                         <th>Time information</th>
+                                         <th>Delivery information</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -193,7 +193,7 @@
                                             <td>${io.order_name}</td>
                                             <td>${io.sender_province+io.sender_city}</td>
                                             <td>${io.status}</td>
-                                            <td>${io.initial_time+" 经过"+io.live_time}</td>
+                                            <td>${io.initial_time+" go through"+io.live_time}</td>
                                             <td>${io.trans_info}</td>
                                         </tr>
                                     </#list>
@@ -209,19 +209,19 @@
                     <!--SENDING ORDER-->
                     <div class="panel panel-default order_table" id="sending_order_table" style="display: none;">
                         <div class="panel-heading">
-                           寄出订单
+                           Send order
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th>订单No.</th>
-                                        <th>订单名称</th>
-                                        <th>目的地</th>
-                                        <th>订单状态</th>
-                                        <th>时间信息</th>
-                                        <th>配送信息</th>
+                                        <th>Order No.</th>
+                                         <th>Order name</th>
+                                         <th>Destination</th>
+                                         <th>Order status</th>
+                                         <th>Time information</th>
+                                         <th>Delivery information</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -233,7 +233,7 @@
                                             <td>${so.order_name}</td>
                                             <td>${so.receiver_province+so.receiver_city}</td>
                                             <td>${so.status}</td>
-                                            <td>${so.initial_time+" 经过"+so.live_time}</td>
+                                            <td>${so.initial_time+" go through"+so.live_time}</td>
                                             <td>${so.trans_info}</td>
                                         </tr>
                                     </#list>
@@ -259,26 +259,26 @@
 
             <div id="container" ></div>
         <div id="query_area" class="col-md-4">
-            <h2>物流位置查询</h2>
+            <h2>Logistics location query</h2>
             <div class="input-group">
-                <input type="text" class="form-control" id="order_text" placeholder="请输入您的订单号" />
+                <input type="text" class="form-control" id="order_text" placeholder="Please enter your order number" />
                     <span class="input-group-btn">
-                    <button class="btn btn-lg btn-success" id="query_btn" type="button">查询</button>
+                    <button class="btn btn-lg btn-success" id="query_btn" type="button">Inquire</button>
                     </span>
             </div>
 
 
 
             <div class="input-group">
-                <span class="input-group-addon">发货地</span>
-                <input type="text" id="start_place" class="form-control" readonly="readonly" placeholder="请先行输入订单号"/>
+                <span class="input-group-addon">Delivery place</span>
+                <input type="text" id="start_place" class="form-control" readonly="readonly" placeholder="Please enter the order number first"/>
             </div>
             <div class="input-group">
-                <span class="input-group-addon">目的地</span>
-                <input type="text" id="end_place" class="form-control" readonly="readonly" placeholder="请先行输入订单号"/>
+                <span class="input-group-addon">destination</span>
+                <input type="text" id="end_place" class="form-control" readonly="readonly" placeholder="Please enter the order number first"/>
             </div>
             <div class="input-group">
-                <span class="input-group-addon">物流状况</span>
+                <span class="input-group-addon">Logistics status</span>
                 <input type="text" class="form-control" readonly="readonly" id="trans_infor"/>
             </div>
         </div>
@@ -290,7 +290,7 @@
     </div>
     <!-- /. ROW  -->
 </div >
-<footer class="center-block"><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://guantaow.taobao.com/">速通公司</a></p></footer>
+<footer class="center-block"><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://guantaow.taobao.com/">Speed co., ltd.</a></p></footer>
 
 <!-- /. PAGE INNER  -->
 <!--</div>-->
@@ -309,7 +309,7 @@
 <script>
     $(document).ready(function () {
         $('#dataTables-example').dataTable();
-        $("#container").hide();// 等待学改成#container
+        $("#container").hide();// Waiting to learn#container
         $(".nav1").click(function () {
             $("#container").hide();
             $("#page-inner").show();
@@ -365,37 +365,37 @@
 
 
                      truckDriving = new AMap.TruckDriving({
-                        policy: 0, // 规划策略
-                        size: 1, // 车型大小
-                        width: 2.5, // 宽度
-                        height: 2, // 高度
-                        load: 1, // 载重
-                        weight: 12, // 自重
-                        axlesNum: 2, // 轴数
-                        province: '京', // 车辆牌照省份
+                       policy: 0, // Planning strategy
+                         size: 1, // model size
+                         width: 2.5, // width
+                         height: 2, // height
+                         load: 1, // load
+                         weight: 12, // self weight
+                         axlesNum: 2, // number of axles
+                         province:'Beijing', // province of vehicle license plate
                     })
 
                      path = [
-                        {keyword:order.sender_area,city:order.sender_city},//起点
-                        // {keyword:'北京西站',city:'010'},//途径
-                        {keyword:order.receiver_area,city:order.receiver_city}//终点
+                        {keyword:order.sender_area,city:order.sender_city},//starting point
+                        // {keyword:'Beijing West Railway Station',city:'010'},//way
+                        {keyword:order.receiver_area,city:order.receiver_city}//end
                     ];
-                    //经纬度版本
+                    //Latitude and longitude version
                     // var path = [];
-                    // path.push({lnglat:[116.303843, 39.983412]});//起点
-                    // path.push({lnglat:[116.321354, 39.896436]});//途径
-                    // path.push({lnglat:[116.407012, 39.992093]});//终点
+                    // path.push({lnglat:[116.303843, 39.983412]});//starting point
+                    // path.push({lnglat:[116.321354, 39.896436]});//way
+                    // path.push({lnglat:[116.407012, 39.992093]});//end
 
                     truckDriving.search(path, function(status, result) {
-                        // result即是对应的货车导航信息，相关数据结构文档请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
+                        // resultThat is the corresponding truck navigation information, please refer to the relevant data structure documents https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
                         if (status === 'complete') {
-                            log.success('绘制货车路线完成');
+                            log.success('Draw the truck route completed');
 
                             if (result.routes && result.routes.length) {
                                 drawRoute(result.routes[0]);
                             }
                         } else {
-                            log.error('获取货车规划数据失败：' + result);
+                            log.error('Failed to obtain truck planning data：' + result);
                         }
                     })
 
@@ -426,12 +426,12 @@
 
                         routeLine.setMap(map);
 
-                        // 调整视野达到最佳显示区域
+                        // Adjust the field of view to achieve the best display area
                         map.setFitView([ startMarker, endMarker, routeLine ]);
                     }
 
-                    // 解析DrivingRoute对象，构造成AMap.Polyline的path参数需要的格式
-                    // DrivingResult对象结构参考文档 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DriveRoute
+                    // Parse the DrivingRoute object and construct it into the format required by the path parameter of AMap.Polyline
+                    // DrivingResultObject structure reference document https://lbs.amap.com/api/javascript-api/reference/route-search#m_DriveRoute
                     function parseRouteToPath(route) {
                         var path = [];
 
@@ -458,37 +458,37 @@
 
     //
     // var truckDriving = new AMap.TruckDriving({
-    //     policy: 0, // 规划策略
-    //     size: 1, // 车型大小
-    //     width: 2.5, // 宽度
-    //     height: 2, // 高度
-    //     load: 1, // 载重
-    //     weight: 12, // 自重
-    //     axlesNum: 2, // 轴数
-    //     province: '京', // 车辆牌照省份
+    //     policy: 0, // Planning strategy
+     // size: 1, // model size
+     // width: 2.5, // width
+     // height: 2, // height
+     // load: 1, // load
+     // weight: 12, // self weight
+     // axlesNum: 2, // number of axles
+     // province:'京', // province of vehicle license plate
     // })
     //
     // var path = [
-    //     {keyword:'复旦大学',city:'上海'},//起点
-    //     // {keyword:'北京西站',city:'010'},//途径
-    //     {keyword:'北京大学',city:'北京'}//终点
+    //     {keyword:'Fudan University', city:'Shanghai'},//Starting point
+     // // {keyword:'Beijing West Railway Station',city:'010'},//way
+     // {keyword:'Peking University',city:'Beijing'}//End
     // ];
-    // //经纬度版本
+    // //Latitude and longitude version
     // // var path = [];
-    // // path.push({lnglat:[116.303843, 39.983412]});//起点
-    // // path.push({lnglat:[116.321354, 39.896436]});//途径
-    // // path.push({lnglat:[116.407012, 39.992093]});//终点
+    // // path.push({lnglat:[116.303843, 39.983412]});//starting point
+    // // path.push({lnglat:[116.321354, 39.896436]});//way
+    // // path.push({lnglat:[116.407012, 39.992093]});//end
     //
     // truckDriving.search(path, function(status, result) {
-    //     // result即是对应的货车导航信息，相关数据结构文档请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
+    //     // Result is the corresponding truck navigation information, please refer to related data structure documents https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
     //     if (status === 'complete') {
-    //         log.success('绘制货车路线完成');
+    //         log.success('Draw the truck route completed');
     //
     //         if (result.routes && result.routes.length) {
     //             drawRoute(result.routes[0]);
     //         }
     //     } else {
-    //         log.error('获取货车规划数据失败：' + result);
+    //         log.error('Failed to obtain truck planning data：' + result);
     //     }
     // })
     //
@@ -519,12 +519,12 @@
     //
     //     routeLine.setMap(map);
     //
-    //     // 调整视野达到最佳显示区域
+    //     // Adjust the field of view to achieve the best display area
     //     map.setFitView([ startMarker, endMarker, routeLine ]);
     // }
     //
-    // // 解析DrivingRoute对象，构造成AMap.Polyline的path参数需要的格式
-    // // DrivingResult对象结构参考文档 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DriveRoute
+    // // Parse the DrivingRoute object and construct it into the format required by the path parameter of AMap.Polyline
+    // // DrivingResultObject structure reference document https://lbs.amap.com/api/javascript-api/reference/route-search#m_DriveRoute
     // function parseRouteToPath(route) {
     //     var path = [];
     //
