@@ -32,12 +32,12 @@
 
 	<div class="container">
 		<div class="form row">
-			<form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="login_form" action="/user/login_verify" method="post">
+			<form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="login_form" action="/checkLogin" method="post">
 				<h3 class="form-title">Log in to your account</h3>
 				<div class="col-sm-9 col-md-9">
 					<div class="form-group">
 						<i class="fa fa-user fa-lg"></i>
-						<input class="form-control required" type="text" placeholder="Username" name="username" autofocus="autofocus" maxlength="20"/>
+						<input class="form-control required" type="text" placeholder="UserName" name="userName" autofocus="autofocus" maxlength="20"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-lock fa-lg"></i>
@@ -48,7 +48,7 @@
 							<input type="checkbox" name="remember" value="1"/> remember me
 						</label>
 						<hr />
-						<a href="javascript:;" id="register_btn" class="">register account</a>
+						<a href="/register" id="register_btn" class="">register account</a>
 					</div>
 					<div class="form-group">
 						<input type="submit" class="btn btn-success pull-right" value="Log in"/>

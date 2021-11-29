@@ -15,4 +15,8 @@ public interface UserDAO {
 
 	int insertUser(User user);
 
+	List<String> showCities(String state);
+
+	List<String> showAreas(String city);
+
 }

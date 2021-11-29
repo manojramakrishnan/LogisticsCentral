@@ -33,4 +33,16 @@ public class UserServiceImpl implements UserService {
 		return this.userDAO.insertUser(user);
 	}
 
+	@Override
+	public List<String> showCities(String state) {
+		// TODO Auto-generated method stub
+		return this.userDAO.showCities(state);
+	}
+
+	@Override
+	public List<String> showAreas(String city) {
+		// TODO Auto-generated method stub
+		return this.userDAO.showAreas(city);
+	}
+
 }

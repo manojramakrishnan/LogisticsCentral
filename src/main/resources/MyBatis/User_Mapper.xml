@@ -82,9 +82,12 @@ phoneno,
 </trim>
 </insert>
 
+<select id="showCities" resultType="java.lang.String">
+select distinct city from location where state=#{state}
+</select>
 
-
-
-
+<select id="show_areas" resultType="java.lang.String">
+select area from location where city=#{city}
+</select>
 
 </mapper>
