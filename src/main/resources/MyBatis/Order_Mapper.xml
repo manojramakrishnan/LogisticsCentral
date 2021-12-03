@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.tigerlogistics.multiplicantin.tll.DAO.OrderDAO"> 
+<resultMap type="com.tigerlogistics.multiplicantin.tll.model.Orders" id="orders">
+
+<result column="order_id" jdbcType="INTEGER" property="order_id" />
+<result column="order_name" jdbcType="VARCHAR" property="order_name" />
+<result column="order_type" jdbcType="VARCHAR" property="order_type" />
+<result column="sender_id" jdbcType="INTEGER" property="sender_id" />
+<result column="sender_name" jdbcType="VARCHAR" property="sender_name" />
+<result column="sender_province" jdbcType="VARCHAR" property="sender_province" />
+<result column="sender_city" jdbcType="VARCHAR" property="sender_city" />
+<result column="sender_area" jdbcType="VARCHAR" property="sender_area" />
+<result column="sender_address" jdbcType="VARCHAR" property="sender_address" />
+<result column="sender_phone" jdbcType="VARCHAR" property="sender_phone" />
+<result column="receiver_id" jdbcType="INTEGER" property="receiver_id" />
+<result column="receiver_name" jdbcType="VARCHAR" property="receiver_name" />
+<result column="receiver_province" jdbcType="VARCHAR" property="receiver_province" />
+<result column="receiver_city" jdbcType="VARCHAR" property="receiver_city" />
+<result column="receiver_area" jdbcType="VARCHAR" property="receiver_area" />
+<result column="receiver_address" jdbcType="VARCHAR" property="receiver_address" />
+<result column="receiver_phone" jdbcType="VARCHAR" property="receiver_phone" />
+<result column="manager_id" jdbcType="VARCHAR" property="manager_id" />
+<result column="deliver_id" jdbcType="VARCHAR" property="deliver_id" />
+<result column="initial_time" jdbcType="TIMESTAMP" property="initial_time" />
+<result column="live_time" jdbcType="VARCHAR" property="live_time" />
+<result column="status" jdbcType="VARCHAR" property="status" />
+<result column="price" jdbcType="VARCHAR" property="price" />
+<result column="volume" jdbcType="VARCHAR" property="volume" />
+<result column="trans_info" jdbcType="VARCHAR" property="trans_info" />
+</resultMap>
+<insert id="insertOrder" parameterType="com.tigerlogistics.multiplicantin.tll.model.Orders">
+insert into order
+<trim prefix = "(" suffix = ")" suffixOverrides= ",">
+<if test= "ordername != null">
+ordername,
+</if>
+<if test= "ordertype != null">
+ordertype,
+</if>
+<if test= "senderid != null">
+senderid,
+</if>
+<if test= "sendername != null">
+sendername,
+</if>
+<if test= "senderprovince != null">
+senderprovince,
+</if>
+<if test= "sendercity != null">
+sendercity,
+</if>
+<if test= "senderarea != null">
+senderarea,
+</if>
+<if test= "senderaddress != null">
+senderaddress,
+</if>
+<if test= "senderphone != null">
+senderphone,
+</if>
+<if test= "receiverid != null">
+receiverid,
+</if>
+<if test= "receivername != null">
+receivername,
+</if>
+<if test= "receiverprovince != null">
+receiverprovince,
+</if>
+<if test= "receivercity != null">
+receivercity,
+</if>
+<if test= "receiverarea != null">
+receiverarea,
+</if>
+<if test= "receiveraddress != null">
+receiveraddress,
+</if>
+<if test= "receiverphone != null">
+receiverphone,
+</if>
+<if test= "managerid != null">
+managerid,
+</if>
+<if test= "deliveryid != null">
+deliveryid,
+</if>
+<if test= "initialtime != null">
+initialtime,
+</if>
+<if test= "livetime != null">
+livetime,
+</if>
+<if test= "status != null">
+status,
+</if>
+<if test= "price != null">
+price,
+</if>
+<if test= "volume != null">
+volume,
+</if>
+<if test= "transinfo != null">
+transinfo,
+</if>
+
+</trim>
+<trim prefix= "values (" suffix= ")" suffixOverrides= ",">
+<if test= "ordername != null">
+#{ordername, jdbcType=VARCHAR},
+</if>
+<if test= "ordertype != null">
+#{ordertype, jdbcType=VARCHAR},
+</if>
+<if test= "senderid != null">
+#{senderid, jdbcType=INTEGER},
+</if>
+<if test= "sendername != null">
+#{sendername, jdbcType=VARCHAR},
+</if>
+<if test= "senderprovince != null">
+#{senderprovince, jdbcType=VARCHAR},
+</if>
+<if test= "sendercity != null">
+#{sendercity, jdbcType=VARCHAR},
+</if>
+<if test= "senderarea != null">
+#{senderarea, jdbcType=VARCHAR},
+</if>
+<if test= "senderAddress != null">
+#{senderaddress, jdbcType=VARCHAR},
+</if>
+<if test= "senderphone != null">
+#{senderphone, jdbcType=VARCHAR},
+</if>
+<if test= "receiverid != null">
+#{receiverid, jdbcType=INTEGER},
+</if>
+<if test= "receivername != null">
+#{receivername, jdbcType=VARCHAR},
+</if>
+<if test= "receiverprovince != null">
+#{receiverprovince, jdbcType=VARCHAR},
+</if>
+<if test= "receivercity != null">
+#{receivercity, jdbcType=VARCHAR},
+</if>
+<if test= "receiverarea != null">
+#{receiverarea, jdbcType=VARCHAR},
+</if>
+<if test= "receiveraddress != null">
+#{receiveraddress, jdbcType=VARCHAR},
+</if>
+<if test= "receiverphone != null">
+#{receiverphone, jdbcType=VARCHAR},
+</if>
+<if test= "managerid != null">
+#{managerid, jdbcType=VARCHAR},
+</if>
+<if test= "deliveryid != null">
+#{deliveryid, jdbcType=VARCHAR},
+</if>
+<if test= "initialtime != null">
+#{initialtime, jdbcType=VARCHAR},
+</if>
+<if test= "liveTime != null">
+#{liveTime, jdbcType=VARCHAR},
+</if>
+<if test= "status != null">
+#{status, jdbcType=VARCHAR},
+</if>
+<if test= "price != null">
+#{price, jdbcType=VARCHAR},
+</if>
+<if test= "volume != null">
+#{volume, jdbcType=VARCHAR},
+</if>
+<if test= "transinfo != null">
+#{transinfo, jdbcType=VARCHAR},
+</if>
+
+</trim>
+</insert>
+
+</mapper>
