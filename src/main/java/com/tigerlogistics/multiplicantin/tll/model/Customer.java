@@ -61,5 +61,7 @@ public class Customer {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	
+	public Customer() {
+		
+	}
 }

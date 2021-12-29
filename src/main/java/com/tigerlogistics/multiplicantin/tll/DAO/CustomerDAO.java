@@ -10,6 +10,8 @@ public interface CustomerDAO {
 
 	void update(Customer customer);
 
-	void deleteById(Integer customerId); 
+	void deleteById(Integer customerId);
+
+	Customer selectById(Integer customerId); 
 
 }

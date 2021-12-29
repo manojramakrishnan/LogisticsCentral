@@ -47,5 +47,14 @@
 		delete from wms_customer
 		where CUSTOMER_ID = #{id}
 	</delete>
-	
+	<select id="selectById" resultMap= "customer">
+		Select c.customer_Id,c.customer_Name,c.customer_Person,c.customer_Tel,c.customer_Email,c.customer_Address from wms_customer c where c.customer_Id= #{id}
+	</select>
+	<select id="selectByName" resultMap= "customer">
+		Select c.customer_Id,c.customer_Name,c.customer_Person,c.customer_Tel,c.customer_Email,c.customer_Address from wms_customer c where c.customer_Name= #{customerName}
+	</select>
+	<select id="selectAll" resultMap= "customer">
+		Select c.customer_Id,c.customer_Name,c.customer_Person,c.customer_Tel,c.customer_Email,c.customer_Address from wms_customer c 
+	</select>
+		
 	</mapper>
