@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.tigerlogistics.multiplicantin.tll.DAO.CustomerDAO;
 import com.tigerlogistics.multiplicantin.tll.DAO.StockOutDAO;
 import com.tigerlogistics.multiplicantin.tll.exception.CustomerManageServiceException;
@@ -113,7 +114,7 @@ public class CustomerManageServiceImpl implements CustomerManageService{
 	}
 
 	@Override
-	public Map<String, Object> selectByName(int offset, int limit, String keyword) {
+	public Map<String, Object> selectByName(int offset, int limit, String customerName) {
 		// TODO Auto-generated method stub
 		Map<String,Object> resultSet= new HashMap<>();
 		List<Customer> customers= new ArrayList<>();
@@ -125,20 +126,75 @@ public class CustomerManageServiceImpl implements CustomerManageService{
 		try {
 			if(isPagination) {
 				PageHelper.offsetPage(offset,limit);
+				customers = customerDAO.selectApproximateByName(customerName);
+				if(customers != null) {
+					PageInfo <Customer> pageInfo = new PageInfo<>(customers);
+					total= pageInfo.getTotal();
+								
+				}
+				else {
+					customers = new ArrayList<>();
+				}
+			}
+			else {
+				customers = customerDAO.selectApproximateByName(customerName);
+				if(customers !=null) {
+					total = customers.size();
+				}
+				else {
+					customers = new ArrayList();
+				}
 			}
 		}
 		catch(PersistenceException e) {
 			
 		}
+		resultSet.put("data", customers);
+		resultSet.put("total", total);
 		
-		
-		return null;
+		return resultSet;
 	}
 
 	@Override
-	public Map<String, Object> selectAll(int offset, String keyword, int limit) {
+	public Map<String, Object> selectAll(int offset,int limit) {
 		// TODO Auto-generated method stub
-		return null;
+		Map<String,Object> resultSet = new HashMap();
+		List<Customer> customers = new ArrayList<Customer>();
+		long total =0;
+		boolean isPagination= true;
+		if (offset <0 || limit<0) {
+			isPagination =false;
+			
+		}
+		try {
+			if(isPagination) {
+				PageHelper.offsetPage(offset, limit);
+				customers=customerDAO.selectAll();
+				if(customers != null) {
+					PageInfo<Customer> pageInfo = new PageInfo<>(customers);
+					total = pageInfo.getTotal();
+				}
+				else {
+					customers = new ArrayList<>();
+				}
+			}
+			else {
+				customers= customerDAO.selectAll();
+				if(customers != null) {
+					total = customers.size();
+				}
+				else {
+					customers = new ArrayList<>();
+					
+				}
+			}
+		}
+		catch(PersistenceException e) {
+			
+		}
+		resultSet.put("data", customers);
+		resultSet.put("total", total);
+		return resultSet;
 	}
 
 }

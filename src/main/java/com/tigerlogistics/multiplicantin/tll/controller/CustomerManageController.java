@@ -86,7 +86,7 @@ public class CustomerManageController {
 			queryResult= customerManageService.selectByName(offset,limit,keyword);
 			break;
 		case SEARCH_ALL:
-			queryResult= customerManageService.selectAll(offset,keyword,limit);
+			queryResult= customerManageService.selectAll(offset,limit);
 			break;
 		default:
 			break;
@@ -95,6 +95,7 @@ public class CustomerManageController {
 		
 		return queryResult;
 	}
+	
 
 }
 

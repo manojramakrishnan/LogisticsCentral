@@ -1,5 +1,7 @@
 package com.tigerlogistics.multiplicantin.tll.DAO;
 
+import java.util.List;
+
 import com.tigerlogistics.multiplicantin.tll.model.Customer;
 
 public interface CustomerDAO {
@@ -12,6 +14,10 @@ public interface CustomerDAO {
 
 	void deleteById(Integer customerId);
 
-	Customer selectById(Integer customerId); 
+	Customer selectById(Integer customerId);
+
+	List<Customer> selectApproximateByName(String customerName);
+
+	List<Customer> selectAll(); 
 
 }

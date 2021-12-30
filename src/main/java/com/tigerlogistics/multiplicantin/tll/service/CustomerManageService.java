@@ -17,6 +17,6 @@ public interface CustomerManageService {
 
 	Map<String, Object> selectByName(int offset, int limit, String keyword);
 
-	Map<String, Object> selectAll(int offset, String keyword, int limit);
+	Map<String, Object> selectAll(int offset, int limit);
 
 }

@@ -8,4 +8,6 @@ public interface StockOutDAO {
 
 	List<StockOut> selectByCustomerId(Integer customerId);
 
+	List<StockOut> selectByGoodsId(Integer goodsId);
+
 }
