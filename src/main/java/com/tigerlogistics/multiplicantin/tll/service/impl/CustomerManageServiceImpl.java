@@ -1,5 +1,7 @@
 package com.tigerlogistics.multiplicantin.tll.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.Map;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -17,6 +20,8 @@ import com.tigerlogistics.multiplicantin.tll.exception.CustomerManageServiceExce
 import com.tigerlogistics.multiplicantin.tll.model.Customer;
 import com.tigerlogistics.multiplicantin.tll.model.StockOut;
 import com.tigerlogistics.multiplicantin.tll.service.CustomerManageService;
+import com.tigerlogistics.multiplicantin.tll.util.EJConvertor;
+import com.tigerlogistics.multiplicantin.tll.util.FileUtil;
 
 @Service("customerManageService")
 public class CustomerManageServiceImpl implements CustomerManageService{
@@ -26,6 +31,10 @@ public class CustomerManageServiceImpl implements CustomerManageService{
 	
 	@Autowired
 	private StockOutDAO stockOutDAO;
+
+	@Autowired
+	private EJConvertor ejConvertor;
+	
 	
 	@Override
 	public boolean addCustomer(Customer customer)  {
@@ -197,4 +206,49 @@ public class CustomerManageServiceImpl implements CustomerManageService{
 		return resultSet;
 	}
 
+	@Override
+    public Map<String, Object> importCustomer(MultipartFile file)  {
+        
+        Map<String, Object> result = new HashMap<>();
+        int total = 0;
+        int available = 0;
+
+        
+        try {
+            List<Customer> customers = ejConvertor.excelReader(Customer.class, FileUtil.convertMultipartFileToFile(file));
+            if (customers != null) {
+                total = customers.size();
+
+                
+                List<Customer> availableList = new ArrayList<>();
+                for (Customer customer : customers) {
+                    if (customerCheck(customer)) {
+                        if (customerDAO.selectByName(customer.getName()) == null)
+                            availableList.add(customer);
+                    }
+                }
+
+                
+                available = availableList.size();
+                if (available > 0) {
+                    customerDAO.insertBatch(availableList);
+                }
+            }
+        } catch (PersistenceException | IOException e) {
+            
+        }
+
+        result.put("total", total);
+        result.put("available", available);
+        return result;
+    }
+	
+	@Override
+    public File exportCustomer(List<Customer> customers) {
+        if (customers == null)
+            return null;
+
+        return ejConvertor.excelWriter(Customer.class, customers);
+    }
+	
 }

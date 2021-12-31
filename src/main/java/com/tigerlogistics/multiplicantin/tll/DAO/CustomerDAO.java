@@ -19,5 +19,8 @@ public interface CustomerDAO {
 	List<Customer> selectApproximateByName(String customerName);
 
 	List<Customer> selectAll(); 
+	
+	void insertBatch(List<Customer> customers);
+
 
 }

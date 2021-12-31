@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tigerlogistics.multiplicantin.tll.exception.CustomerManageServiceException;
 import com.tigerlogistics.multiplicantin.tll.model.Customer;
@@ -96,6 +97,31 @@ public class CustomerManageController {
 		return queryResult;
 	}
 	
+	@RequestMapping(value = "importCustomer", method = RequestMethod.POST)
+    
+	public
+	    @ResponseBody
+	    Map<String, Object> importCustomer(@RequestParam("file") MultipartFile file) {
+	        
+	        Response responseContent = ResponseFactory.newInstance();
+	        String result = Response.RESPONSE_RESULT_SUCCESS;
+
+	        
+	        int total = 0;
+	        int available = 0;
+	        if (file == null)
+	            result = Response.RESPONSE_RESULT_ERROR;
+	        Map<String, Object> importInfo = customerManageService.importCustomer(file);
+	        if (importInfo != null) {
+	            total = (int) importInfo.get("total");
+	            available = (int) importInfo.get("available");
+	        }
+
+	        responseContent.setResponseResult(result);
+	        responseContent.setResponseTotal(total);
+	        responseContent.setCustomerInfo("available", available);
+	        return responseContent.generateResponse();
+	    }
 
 }
 

@@ -83,7 +83,6 @@ public class GoodsManageServiceImpl implements GoodsManageService {
 			
 		}
 		return true;
-
 	}
 
 }

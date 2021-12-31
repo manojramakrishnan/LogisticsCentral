@@ -3,74 +3,95 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.tigerlogistics.multiplicantin.tll.DAO.CustomerDAO">
-<resultMap type="com.tigerlogistics.multiplicantin.tll.model.Customer" id="customer">
-		<id property="id" column="CUSTOMER_ID"/>
-		<result property="name" column="CUSTOMER_NAME"/>
-		<result property="personInCharge" column="CUSTOMER_PERSON"/>
-		<result property="tel" column="CUSTOMER_TEL"/>
-		<result property="email" column="CUSTOMER_EMAIL"/>
-		<result property="address" column="CUSTOMER_ADDRESS"/>
+<mapper
+	namespace="com.tigerlogistics.multiplicantin.tll.DAO.CustomerDAO">
+	<resultMap
+		type="com.tigerlogistics.multiplicantin.tll.model.Customer"
+		id="customer">
+		<id property="id" column="CUSTOMER_ID" />
+		<result property="name" column="CUSTOMER_NAME" />
+		<result property="personInCharge" column="CUSTOMER_PERSON" />
+		<result property="tel" column="CUSTOMER_TEL" />
+		<result property="email" column="CUSTOMER_EMAIL" />
+		<result property="address" column="CUSTOMER_ADDRESS" />
 	</resultMap>
 	<select id="selectByName" resultMap="customer">
 		select
-			c.CUSTOMER_ID,
-			c.CUSTOMER_NAME,
-			c.CUSTOMER_PERSON,
-			c.CUSTOMER_TEL,
-			c.CUSTOMER_EMAIL,
-			c.CUSTOMER_ADDRESS
+		c.CUSTOMER_ID,
+		c.CUSTOMER_NAME,
+		c.CUSTOMER_PERSON,
+		c.CUSTOMER_TEL,
+		c.CUSTOMER_EMAIL,
+		c.CUSTOMER_ADDRESS
 		from
-			wms_customer c
+		wms_customer c
 		where
-			c.CUSTOMER_NAME = #{customerName}
+		c.CUSTOMER_NAME = #{customerName}
 	</select>
 	<insert id="insert">
-		insert into wms_customer(CUSTOMER_NAME,CUSTOMER_PERSON,CUSTOMER_TEL,CUSTOMER_EMAIL,CUSTOMER_ADDRESS)
+		insert into
+		wms_customer(CUSTOMER_NAME,CUSTOMER_PERSON,CUSTOMER_TEL,CUSTOMER_EMAIL,CUSTOMER_ADDRESS)
 		values (#{name},#{personInCharge},#{tel},#{email},#{address})
 	</insert>
-	
+
 	<update id="update">
 		update
-			wms_customer
+		wms_customer
 		set
-			CUSTOMER_NAME = #{name},
-			CUSTOMER_PERSON = #{personInCharge},
-			CUSTOMER_TEL = #{tel},
-			CUSTOMER_EMAIL = #{email},
-			CUSTOMER_ADDRESS = #{address}
+		CUSTOMER_NAME = #{name},
+		CUSTOMER_PERSON = #{personInCharge},
+		CUSTOMER_TEL = #{tel},
+		CUSTOMER_EMAIL = #{email},
+		CUSTOMER_ADDRESS = #{address}
 		where
-			CUSTOMER_ID = #{id}
+		CUSTOMER_ID = #{id}
 	</update>
-	
+
 	<delete id="deleteById">
 		delete from wms_customer
 		where CUSTOMER_ID = #{id}
 	</delete>
-	<select id="selectById" resultMap= "customer">
-		Select c.customer_Id,c.customer_Name,c.customer_Person,c.customer_Tel,c.customer_Email,c.customer_Address from wms_customer c where c.customer_Id= #{id}
+	<select id="selectById" resultMap="customer">
+		Select
+		c.customer_Id,c.customer_Name,c.customer_Person,c.customer_Tel,c.customer_Email,c.customer_Address
+		from wms_customer c where c.customer_Id= #{id}
 	</select>
-	<select id="selectByName" resultMap= "customer">
-		Select c.customer_Id,c.customer_Name,c.customer_Person,c.customer_Tel,c.customer_Email,c.customer_Address from wms_customer c where c.customer_Name= #{customerName}
+	<select id="selectByName" resultMap="customer">
+		Select
+		c.customer_Id,c.customer_Name,c.customer_Person,c.customer_Tel,c.customer_Email,c.customer_Address
+		from wms_customer c where c.customer_Name= #{customerName}
 	</select>
-	<select id="selectAll" resultMap= "customer">
-		Select c.customer_Id,c.customer_Name,c.customer_Person,c.customer_Tel,c.customer_Email,c.customer_Address from wms_customer c 
+	<select id="selectAll" resultMap="customer">
+		Select
+		c.customer_Id,c.customer_Name,c.customer_Person,c.customer_Tel,c.customer_Email,c.customer_Address
+		from wms_customer c
 	</select>
 	<select id="selectApproximateByName" resultMap="customer">
 		select
-			c.CUSTOMER_ID,
-			c.CUSTOMER_NAME,
-			c.CUSTOMER_PERSON,
-			c.CUSTOMER_TEL,
-			c.CUSTOMER_EMAIL,
-			c.CUSTOMER_ADDRESS
+		c.CUSTOMER_ID,
+		c.CUSTOMER_NAME,
+		c.CUSTOMER_PERSON,
+		c.CUSTOMER_TEL,
+		c.CUSTOMER_EMAIL,
+		c.CUSTOMER_ADDRESS
 		from
-			wms_customer c
-			<choose>
+		wms_customer c
+		<choose>
 			<when test="_parameter != null">
-				where c.CUSTOMER_NAME like concat(concat('%',#{customerName}),'%')
+				where c.CUSTOMER_NAME like
+				concat(concat('%',#{customerName}),'%')
 			</when>
 		</choose>
 	</select>
-		
-	</mapper>
+
+	<insert id="insertBatch">
+
+		insert into
+		wms_customer(CUSTOMER_NAME,CUSTOMER_PERSON,CUSTOMER_TEL,CUSTOMER_EMAIL,CUSTOMER_ADDRESS)
+		values
+		<foreach collection="list" item="customer" separator=",">
+			(#{customer.name},#{customer.personInCharge},#{customer.tel},#{customer.email},#{customer.address})
+		</foreach>
+	</insert>
+
+</mapper>
