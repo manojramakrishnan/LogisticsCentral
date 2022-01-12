@@ -21,6 +21,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -38,7 +39,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
-public class EJConvertor {
+public class EJConverter {
 
    
     private static final String DEFAULT_CONFIG_FILE_NAME = "EJConvertorConfig.xml";
@@ -68,11 +69,11 @@ public class EJConvertor {
     
     private Map<String, MappingInfo> excelJavaBeanMap;
 
-    public EJConvertor() {
+    public EJConverter() {
         init(DEFAULT_CONFIG_FILE_NAME);
     }
 
-    public EJConvertor(String filePath) {
+    public EJConverter(String filePath) {
         init(filePath);
     }
 
@@ -496,8 +497,7 @@ public class EJConvertor {
             return className;
         }
 
-        ram sheetName sheet 名称
-         */
+        
         void setSheetName(String sheetName) {
             this.sheetName = sheetName;
         }

@@ -1,8 +1,13 @@
 package com.tigerlogistics.multiplicantin.tll.controller;
 
-import java.lang.reflect.Method;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -122,6 +127,46 @@ public class CustomerManageController {
 	        responseContent.setCustomerInfo("available", available);
 	        return responseContent.generateResponse();
 	    }
+	
+	@SuppressWarnings("unchecked")
+    @RequestMapping(value = "exportCustomer", method = RequestMethod.GET)
+    public void exportCustomer(@RequestParam("searchType") String searchType, @RequestParam("keyWord") String keyWord,
+                               HttpServletResponse response) throws IOException {
 
+        String fileName = "customerInfo.xlsx";
+
+        List<Customer> customers = null;
+        Map<String, Object> queryResult = query(searchType, keyWord, -1, -1);
+
+        if (queryResult != null) {
+            customers = (List<Customer>) queryResult.get("data");
+        }
+
+        
+        File file = customerManageService.exportCustomer(customers);
+
+        
+        if (file != null) {
+            
+            response.addHeader("Content-Disposition", "attachment;filename=" + fileName);
+            FileInputStream inputStream = new FileInputStream(file);
+            OutputStream outputStream = response.getOutputStream();
+            byte[] buffer = new byte[8192];
+
+            int len;
+            while ((len = inputStream.read(buffer, 0, buffer.length)) > 0) {
+                outputStream.write(buffer, 0, len);
+                outputStream.flush();
+            }
+
+            inputStream.close();
+            outputStream.close();
+
+        }
+    }
+	private Map<String, Object> query(String searchType, String keyWord, int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

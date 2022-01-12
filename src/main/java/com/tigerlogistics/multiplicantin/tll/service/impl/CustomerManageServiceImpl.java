@@ -20,6 +20,7 @@ import com.tigerlogistics.multiplicantin.tll.exception.CustomerManageServiceExce
 import com.tigerlogistics.multiplicantin.tll.model.Customer;
 import com.tigerlogistics.multiplicantin.tll.model.StockOut;
 import com.tigerlogistics.multiplicantin.tll.service.CustomerManageService;
+import com.tigerlogistics.multiplicantin.tll.util.EJConverter;
 import com.tigerlogistics.multiplicantin.tll.util.EJConvertor;
 import com.tigerlogistics.multiplicantin.tll.util.FileUtil;
 
@@ -33,7 +34,7 @@ public class CustomerManageServiceImpl implements CustomerManageService{
 	private StockOutDAO stockOutDAO;
 
 	@Autowired
-	private EJConvertor ejConvertor;
+	private EJConverter ejConvertor;
 	
 	
 	@Override
